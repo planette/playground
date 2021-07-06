@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  web:
+    image: contributte_playground
+    build: .docker
+    volumes:
+    - ./:/var/www/html
+    - ./.docker/apache/sites-enabled:/etc/apache2/sites-enabled
+    ports:
+    - 8080:80
+
+    links:
+      - database
+
+  database:
+    image: mariadb:latest
+    volumes:
+    - ./.docker/database:/docker-entrypoint-initdb.d:cached,ro
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: playground
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: playground
+
+  adminer:
+    image: adminer:latest
+    ports:
+    - 8081:8080

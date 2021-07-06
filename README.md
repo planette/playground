@@ -20,7 +20,35 @@ If you want to test some example just clone this repository and take a look at p
 git clone git@github.com:contributte/playground.git
 ```
 
-For more details on how to use this package, check out example documentation below.
+If you are using Docker you can run all example by command
+
+1)
+
+```bash
+docker-compose up -d
+```
+
+2) install composer packages via>
+
+```bash
+docker-compose exec web bash
+cd example
+composer install
+```
+
+3) MySQL connection:
+
+```
+host: database
+user: root
+password: root
+```
+
+4) Follow instruction from example project readme.
+
+5) Visit `http://projectname.localhost:8080/`, for example `http://nettrine.localhost:8080/`.
+
+For more details on how to use chosen package, check out example documentation below.
 
 
 | Project | Description |
